@@ -1,0 +1,36 @@
+global:
+  scrape_interval: 15s      # The interval for fetching data, the default is 1 minute
+  evaluation_interval: 15s  # interval for evaluating data
+  external_labels:
+    monitor: 'my-monitor'
+
+# Alertmanager configuration
+#alerting:
+#  alertmanagers:
+#    - static_configs:
+#      - targets:
+#        - localhost:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+#rule_files:
+#  - ./rules/rules.yml
+
+scrape_configs:
+  # prometheus Crawling configuration of own data
+  - job_name: prometheus
+    static_configs:
+      - targets: ["localhost:9090"]
+  - job_name: node_exporter
+    scrape_interval: 10s
+    static_configs:
+      - targets: ["localhost:9100","node_exporter:9100"]
+
+  # Go Crawling configuration of program data
+  - job_name: go_app_server
+    scrape_interval: 10s  # Crawl interval
+    metrics_path: /metrics  # URL path to scrape data
+    # scheme defaults to 'http'
+    static_configs:
+      - targets: ["localhost:8080","app:8080"]
+        labels:
+          instance: go-eagle

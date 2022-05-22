@@ -1,0 +1,9 @@
+Name: eagle                     # Name database
+Addr: localhost:3306            # If it is docker, it can be replaced with the corresponding service name, eg: db:3306
+UserName: root
+Password: 123456
+ShowLog: true                   # whether to print all SQL logs
+MaxIdleConn: 10                 # The maximum number of idle connections, 0 means use the default size of 2, less than 0 means do not use the connection pool
+MaxOpenConn: 60                 # The maximum number of open connections, which needs to be less than the number of max_connections in the database configuration
+ConnMaxLifeTime: 4h             # The maximum survival time of a single connection is recommended to be set slightly smaller than the database timeout period (wait_timeout).
+SlowThreshold: 500ms            # Slow query threshold. After setting, only the slow query log will be printed. The default is 200ms.

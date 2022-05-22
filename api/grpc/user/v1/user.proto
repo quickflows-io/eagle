@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package user.v1; // The package name is the same as the directory name
+
+// Specify the package path and package name of go
+option go_package = "api/grpc/user/v1;v1";
+
+service UserService{
+    rpc LoginByPhone(PhoneLoginRequest) returns (PhoneLoginReply) {}
+}
+
+message PhoneLoginRequest {
+    int64 Phone = 1;
+    int32 VerifyCode = 2;
+}
+
+message PhoneLoginReply {
+    string Ret = 1;
+    string err = 2;
+}
+

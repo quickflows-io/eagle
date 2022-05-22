@@ -1,0 +1,14 @@
+Development: false
+DisableCaller: false
+DisableStacktrace: false
+Encoding: json                          # json or console
+Level: info                             # log level, INFO, WARN, ERROR
+Name: eagle
+Writers: console                        # There are 2 options: file, console. Selecting file will record the log to the log file specified by logger_file. Selecting console will output the log to standard output. Of course, both can be selected at the same time.
+LoggerFile: /tmp/log/eagle.log
+LoggerWarnFile: /tmp/log/eagle.wf.log
+LoggerErrorFile: /tmp/log/eagle.err.log
+LogRollingPolicy: daily
+LogRotateDate: 1
+LogRotateSize: 1
+LogBackupCount: 7
